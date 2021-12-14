@@ -109,7 +109,7 @@
         KUBECONFIG: "{{ kubeconfig_path }}"
       when: scorecard_secret_result.stat.exists == True
 
-    - name: "Create the subscription"
+    - name: "Create the subscription 0!"
       shell: "{{ oc_bin_path }} create -f {{ olm_operator_files_path }}/subscription.yml"
       environment:
         KUBECONFIG: "{{ kubeconfig_path }}"

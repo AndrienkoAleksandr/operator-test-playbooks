@@ -111,7 +111,7 @@
     dooou_control_variable: "{{ packagemanifest_presence.rc }}"
     dooou_control_variable_ok_value: "0"
 
-- name: "Create the subscription"
+- name: "Create the subscription 5!"
   shell: "{{ oc_bin_path }} apply -f {{ olm_operator_files_path }}/subscription.yml"
   environment:
     KUBECONFIG: "{{ kubeconfig_path }}"

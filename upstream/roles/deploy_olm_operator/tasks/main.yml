@@ -172,7 +172,7 @@
     KUBECONFIG: "{{ kubeconfig_path }}"
   when: run_upstream|bool
 
-- name: "Create the subscription"
+- name: "Create the subscription 3!"
   shell: "{{ oc_bin_path }} apply -f {{ olm_operator_files_path }}/subscription.yml"
   environment:
     KUBECONFIG: "{{ kubeconfig_path }}"
