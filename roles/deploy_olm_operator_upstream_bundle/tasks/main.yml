@@ -75,7 +75,7 @@
     KUBECONFIG: "{{ kubeconfig_path }}"
 
 - name: "Create the subscription"
-  shell: "{{ oc_bin_path }} apply -f {{ olm_operator_files_path }}/subscription.yml"
+  shell: "{{ oc_bin_path }} apply -f {{ olm_operator_files_path }}/subscription.yml; echo "Good !!!!"; cat {{ olm_operator_files_path }}/subscription.yml"
   environment:
     KUBECONFIG: "{{ kubeconfig_path }}"
 
