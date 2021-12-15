@@ -116,10 +116,6 @@
   environment:
     KUBECONFIG: "{{ kubeconfig_path }}"
 
-# - name: "display file content {{ olm_operator_files_path }}/subscription.yml"
-#   with_file:
-#     - "{{ olm_operator_files_path }}/subscription.yml"
-
 - name: "Display {{ olm_operator_files_path }}/subscription.yml content"
   command: "cat {{ olm_operator_files_path }}/subscription.yml"
   register: command_output
@@ -138,6 +134,15 @@
   ignore_errors: true
   environment:
     KUBECONFIG: "{{ kubeconfig_path }}"
+
+
+- name: "Pods"
+  command: "{{ oc_bin_path }} get pods {{ upstream_namespace_param }} -o yaml"
+  register: command_output_log
+
+- name: Print to console
+  debug:
+    msg: "{{command_output_log.stdout}}"
 
 - name: "Report"
   include_role:
