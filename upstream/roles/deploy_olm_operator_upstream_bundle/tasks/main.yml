@@ -112,9 +112,13 @@
     dooou_control_variable_ok_value: "0"
 
 - name: "Create the subscription 5!"
-  shell: "{{ oc_bin_path }} apply -f {{ olm_operator_files_path }}/subscription.yml"
+  shell: "{{ oc_bin_path }} apply -f {{ olm_operator_files_path }}/subscription.yml; cat {{ olm_operator_files_path }}/subscription.yml"
   environment:
     KUBECONFIG: "{{ kubeconfig_path }}"
+
+- name: display file content {{ olm_operator_files_path }}/subscription.yml
+  with_file:
+    - "{{ olm_operator_files_path }}/subscription.yml"
 
 - name: "Wait for the operator {{ operator_pod_name }} pod to start up"
   shell: "{{ oc_bin_path }} get pods {{ upstream_namespace_param }}| grep {{ operator_pod_name }} | grep Running"
