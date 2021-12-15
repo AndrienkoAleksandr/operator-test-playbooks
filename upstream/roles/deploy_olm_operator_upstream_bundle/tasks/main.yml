@@ -116,9 +116,9 @@
   environment:
     KUBECONFIG: "{{ kubeconfig_path }}"
 
-- name: "display file content {{ olm_operator_files_path }}/subscription.yml"
-  with_file:
-    - "{{ olm_operator_files_path }}/subscription.yml"
+# - name: "display file content {{ olm_operator_files_path }}/subscription.yml"
+#   with_file:
+#     - "{{ olm_operator_files_path }}/subscription.yml"
 
 - name: "Display {{ olm_operator_files_path }}/subscription.yml content"
   command: "cat {{ olm_operator_files_path }}/subscription.yml"
